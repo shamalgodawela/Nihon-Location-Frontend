@@ -1,0 +1,37 @@
+
+.bod1 {
+    background-image: url('../../assets/locat.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh; 
+}
+.heading {
+    color: rgb(255, 255, 255);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2em;
+    text-align: center;
+    margin-top: 0%;
+}
+
+
+@media (max-width: 768px) {
+    .heading {
+        font-size: 1.5em;
+    }
+}
+
+.link1{
+  text-decoration: none;
+  color: white;
+}
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+}
+@media (max-width: 768px) {
+  .center-container {
+    flex-direction: column; 
+  }
+}

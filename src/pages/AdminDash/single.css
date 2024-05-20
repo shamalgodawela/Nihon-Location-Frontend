@@ -1,0 +1,23 @@
+.custom-marker-label {
+    font-size: 18px !important; 
+    
+    
+  }
+.plocation{
+  color: black;
+  font-size: 14px;
+  font-weight: 800;
+}
+.h2location{
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+  color: rgb(255, 255, 255);
+  font-weight: 900;
+}
+.p1location{
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+  color: black;
+  font-weight: 900;
+  font-size: 20px;
+}
