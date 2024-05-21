@@ -16,15 +16,15 @@ const Addlocation = () => {
         event.preventDefault();
 
         try {
-            // Get the user's current location using the Geolocation API
+            
             const position = await new Promise((resolve, reject) => {
                 navigator.geolocation.getCurrentPosition(resolve, reject);
             });
 
             const { latitude, longitude } = position.coords;
 
-            // Send the location data to your backend server
-            const response = await fetch('http://localhost:5000/api/addlocation', {
+            
+            const response = await fetch('https://mern-location-app-api.onrender.com/api/addlocation', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
