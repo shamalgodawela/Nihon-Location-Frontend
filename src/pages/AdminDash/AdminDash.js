@@ -11,7 +11,7 @@ const AllLocations = () => {
 
   useEffect(() => {
     // Fetch all location details from the backend
-    fetch('https://mern-location-app-api.onrender.com/api/getAlllocations')
+    fetch('https://location-app-api.onrender.com/api/getAlllocations')
       .then(response => response.json())
       .then(data => setLocations(data))
       .catch(error => console.error('Error fetching location details:', error));
@@ -20,7 +20,7 @@ const AllLocations = () => {
   const handleViewDetails = async (id) => {
     try {
       // Fetch the details of the selected location by ID
-      const response = await fetch(`https://mern-location-app-api.onrender.com/api/location/${id}`);
+      const response = await fetch(`https://location-app-api.onrender.com/api/location/${id}`);
       const data = await response.json();
       setSelectedLocation(data);
       

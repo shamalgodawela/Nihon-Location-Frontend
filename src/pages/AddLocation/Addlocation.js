@@ -24,7 +24,7 @@ const Addlocation = () => {
             const { latitude, longitude } = position.coords;
 
             
-            const response = await fetch('https://mern-location-app-api.onrender.com/api/addlocation', {
+            const response = await fetch('https://location-app-api.onrender.com/api/addlocation', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
