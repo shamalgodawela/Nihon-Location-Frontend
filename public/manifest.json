@@ -1,5 +1,5 @@
 {
-  "short_name": "React App",
+  "short_name": "Nihon Location system",
   "name": "Nihon Location system",
   "icons": [
     {
@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "Nihon Logo-03.ico",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "Nihon Logo-03.ico",
       "type": "image/png",
       "sizes": "512x512"
     }
