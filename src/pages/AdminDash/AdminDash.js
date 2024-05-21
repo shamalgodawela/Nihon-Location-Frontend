@@ -11,7 +11,7 @@ const AllLocations = () => {
 
   useEffect(() => {
     // Fetch all location details from the backend
-    fetch('http://localhost:5000/api/getAlllocations')
+    fetch('https://mern-location-app-api.onrender.com/api/getAlllocations')
       .then(response => response.json())
       .then(data => setLocations(data))
       .catch(error => console.error('Error fetching location details:', error));
