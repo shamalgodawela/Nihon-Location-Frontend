@@ -14,7 +14,7 @@ const SingleLocation = () => {
     const fetchLocationDetails = async () => {
       try {
         // Fetch location details by ID from the backend
-        const responseLocation = await fetch(`http://localhost:5000/api/location/${id}`);
+        const responseLocation = await fetch(`https://location-app-api.onrender.com/api/location/${id}`);
         const data = await responseLocation.json();
         setLocation(data);
 
