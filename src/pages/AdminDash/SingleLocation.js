@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import Geocode from 'react-geocode';
 import './single.css'
+import Navigation from '../navigation/Navigation';
 
 const SingleLocation = () => {
   const { id } = useParams();
@@ -45,6 +46,7 @@ const SingleLocation = () => {
 
   return (
     <div>
+      <Navigation/><br/><br/><br/>
       <h2 className='h2location'>Location Details</h2><br/>
       <LoadScript googleMapsApiKey="AIzaSyBAlgKPW1nFYu1qSnZrF2WsFaR52NffnMU" onLoad={handleMapLoad}>
       {mapLoaded && location && (

@@ -38,7 +38,8 @@ const Addlocation = () => {
             });
 
             if (response.ok) {
-                console.log('Location saved successfully');
+                console.log('Location saved successfully')
+                alert('Location saved successfully')
                 // Clear input fields after successful submission
                 setShopName('');
                 setExeId('');
