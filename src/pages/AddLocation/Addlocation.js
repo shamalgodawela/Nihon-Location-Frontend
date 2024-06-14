@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './addlocation.css'
+import Footer from '../footer/Footer';
 const Addlocation = () => {
     const [shopName, setShopName] = useState('');
     const [exeId, setExeId] = useState('');
@@ -53,15 +54,16 @@ const Addlocation = () => {
 
     return (
         <body>
-        <div className="form-container">
-          <h1>Location Tracker</h1>
-          <p>This component is used to track the user's location and save it to the database.</p>
+            <h1 className='h1-addlocation'>Location Tracker</h1>
+            <p className='p-addlocation'>This component is used to track the user's location and save it to the database.</p>
+        <div className="form1-container">
+          
           <form onSubmit={handleSubmit}>
-            <div className="form-group">
+            <div className="form1-group">
               <label htmlFor="shopName">Shop Name:</label>
               <input type="text" id="shopName" value={shopName} onChange={handleShopNameChange} />
             </div>
-            <div className="form-group">
+            <div className="form1-group">
       <label htmlFor="exeId">Executive ID:</label>
       <select id="exeId" value={exeId} onChange={handleExeIdChange}>
   <option value="">Select Executive</option>
@@ -75,7 +77,9 @@ const Addlocation = () => {
     </div>
             <button type="submit" className="btn-submit">Save Location</button>
           </form>
-        </div>
+        </div><br/><br/><br/><br/>
+
+        <Footer/>
       </body>
     );
 };

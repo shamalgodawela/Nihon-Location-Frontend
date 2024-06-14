@@ -4,6 +4,7 @@ import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import Geocode from 'react-geocode';
 import './single.css'
 import Navigation from '../navigation/Navigation';
+import Footer from '../footer/Footer';
 
 const SingleLocation = () => {
   const { id } = useParams();
@@ -76,6 +77,10 @@ const SingleLocation = () => {
       
       <p className='p1location'>ExeId: {location.exeId}</p>
       <p className='p1location'>Shop Name: {location.shopName}</p>
+
+      <br/><br/><br/><br/>
+
+      <Footer/>
     </div>
   );
 };

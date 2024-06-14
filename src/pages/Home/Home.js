@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './home.css'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Footer from '../footer/Footer';
 
 
 const MyComponent = () => {
@@ -18,14 +19,15 @@ const MyComponent = () => {
       </div> 
       <div className="center-container">
       <button type="button" className="btn btn-outline-success">
-          <Link className='link1' to="/getalllocation">Admin Login</Link>
+          <Link className='link1' to="/login-admin">Admin Login</Link>
       </button>
         
         
       </div>       
       
 
-      </div>
+      </div><br/><br/><br/><br/><br/><br/><br/><br/>
+      <Footer/>
         
             
             

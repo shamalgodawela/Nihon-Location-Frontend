@@ -12,7 +12,7 @@ body {
 
 }
   
-  .form-container {
+  .form1-container {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
@@ -22,15 +22,17 @@ body {
     margin-top: 10%;
   }
   
-  h1 {
+  .h1-addlocation {
     color: #333;
+    text-align: center;
   }
   
-  p {
+  .p-addlocation {
     color: #666;
+    text-align: center;
   }
   
-  .form-group {
+  .form1-group {
     margin-bottom: 15px;
   }
   
