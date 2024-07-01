@@ -5,7 +5,7 @@ import { IoLocationOutline } from "react-icons/io5";
 import Navigation from '../navigation/Navigation';
 import Footer from '../footer/Footer';
 
-const AllLocations = () => {
+const AdminDash = () => {
   const [locations, setLocations] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [exeId, setExeId] = useState('');
@@ -128,4 +128,4 @@ const AllLocations = () => {
   );
 };
 
-export default AllLocations;
+export default AdminDash;
