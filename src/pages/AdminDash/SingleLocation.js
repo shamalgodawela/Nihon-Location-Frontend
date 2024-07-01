@@ -36,7 +36,7 @@ const SingleLocation = () => {
     fetchLocationDetails();
   }, [id]);
 
-  // Callback function to set mapLoaded state to true when map is loaded
+  
   const handleMapLoad = () => {
     setMapLoaded(true);
   };
