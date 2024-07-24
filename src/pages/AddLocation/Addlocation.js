@@ -20,8 +20,20 @@ const Addlocation = () => {
     setIsLoading(true);
 
     try {
+      // Use a promise with a timeout to handle geolocation delay
       const position = await new Promise((resolve, reject) => {
-        navigator.geolocation.getCurrentPosition(resolve, reject);
+        const timeout = setTimeout(() => reject(new Error('Geolocation request timed out')), 10000); // 10 seconds timeout
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            clearTimeout(timeout);
+            resolve(position);
+          },
+          (error) => {
+            clearTimeout(timeout);
+            reject(error);
+          },
+          { timeout: 10000 } // 10 seconds timeout for geolocation
+        );
       });
 
       const { latitude, longitude } = position.coords;
@@ -45,11 +57,11 @@ const Addlocation = () => {
         setShopName('');
         setExeId('');
       } else {
-        console.error('Failed to save location');
+        console.error('Failed to save location:', await response.text());
         alert('Failed to save location');
       }
     } catch (error) {
-      console.error('Error getting user location:', error);
+      console.error('Error getting user location or saving data:', error);
       alert('Error getting user location or saving data');
     } finally {
       setIsLoading(false);
