@@ -21,7 +21,7 @@ const SingleLocation = () => {
         setLocation(data);
 
         // Set Google Maps API key
-        Geocode.setApiKey('AIzaSyBAlgKPW1nFYu1qSnZrF2WsFaR52NffnMU');
+        Geocode.setApiKey('AIzaSyDfNCKptDrcL7VXDyk4C2SeKnqmmeB7hI0');
 
         // Fetch address based on latitude and longitude
         const { latitude, longitude } = data;
@@ -49,7 +49,7 @@ const SingleLocation = () => {
     <div>
       <Navigation/><br/><br/><br/>
       <h2 className='h2location'>Location Details</h2><br/>
-      <LoadScript googleMapsApiKey="AIzaSyBAlgKPW1nFYu1qSnZrF2WsFaR52NffnMU" onLoad={handleMapLoad}>
+      <LoadScript googleMapsApiKey="AIzaSyDfNCKptDrcL7VXDyk4C2SeKnqmmeB7hI0" onLoad={handleMapLoad}>
       {mapLoaded && location && (
   <GoogleMap
     mapContainerStyle={{ width: '100%', height: '400px' }}
