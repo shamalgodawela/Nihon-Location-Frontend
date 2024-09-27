@@ -18,32 +18,32 @@ const Addlocation = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
-
+  
     try {
-      // Use a promise with a timeout to handle geolocation delay
       const position = await new Promise((resolve, reject) => {
         const timeout = setTimeout(() => reject(new Error('Geolocation request timed out')), 15000); // 15 seconds timeout
         navigator.geolocation.getCurrentPosition(
           (position) => {
-            const { accuracy } = position.coords;
-            console.log('GPS Accuracy:', accuracy);  // Log GPS accuracy in meters
-            if (accuracy <= 1000) {  // Accept locations with accuracy better than 50 meters
-              // Proceed with saving the location
-              resolve(position);
+            console.log('Full Position Data:', position.coords);  // Log full position data
+            const { accuracy, latitude, longitude } = position.coords;
+            console.log(`Accuracy: ${accuracy} meters, Latitude: ${latitude}, Longitude: ${longitude}`);
+            
+            if (accuracy <= 1000) {  // Increased accuracy to 1000 meters
+              resolve(position);  // Proceed with saving the location
             } else {
-              alert('GPS signal is weak. Try moving to an open area.');
+              alert(`GPS signal is weak (Accuracy: ${accuracy} meters). Try moving to an open area.`);
             }
           },
           (error) => {
+            console.error('Geolocation Error:', error);  // Log geolocation errors
             reject(error);
           },
           { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 }
         );
-        
       });
-
+  
       const { latitude, longitude } = position.coords;
-
+  
       const response = await fetch('https://location-app-api.onrender.com/api/addlocation', {
         method: 'POST',
         headers: {
@@ -56,7 +56,7 @@ const Addlocation = () => {
           longitude
         })
       });
-
+  
       if (response.ok) {
         console.log('Location saved successfully');
         alert('Location saved successfully');
@@ -73,6 +73,7 @@ const Addlocation = () => {
       setIsLoading(false);
     }
   };
+  
 
   return (
     <div>
