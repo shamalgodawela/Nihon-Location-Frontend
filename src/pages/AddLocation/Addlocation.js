@@ -27,7 +27,7 @@ const Addlocation = () => {
           (position) => {
             const { accuracy } = position.coords;
             console.log('GPS Accuracy:', accuracy);  // Log GPS accuracy in meters
-            if (accuracy <= 200) {  // Accept locations with accuracy better than 50 meters
+            if (accuracy <= 1000) {  // Accept locations with accuracy better than 50 meters
               // Proceed with saving the location
               resolve(position);
             } else {
