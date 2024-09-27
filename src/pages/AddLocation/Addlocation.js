@@ -24,16 +24,18 @@ const Addlocation = () => {
         const timeout = setTimeout(() => reject(new Error('Geolocation request timed out')), 15000); // 15 seconds timeout
         navigator.geolocation.getCurrentPosition(
           (position) => {
+            console.log('Full Position Data:', position.coords);  // Log full position data
             const { accuracy, latitude, longitude } = position.coords;
             console.log(`Accuracy: ${accuracy} meters, Latitude: ${latitude}, Longitude: ${longitude}`);
-            if (accuracy <= 3000) {
-              resolve(position);
+            
+            if (accuracy <= 1000) {  // Increased accuracy to 1000 meters
+              resolve(position);  // Proceed with saving the location
             } else {
               alert(`GPS signal is weak (Accuracy: ${accuracy} meters). Try moving to an open area.`);
             }
           },
           (error) => {
-            console.error('Geolocation Error:', error);
+            console.error('Geolocation Error:', error);  // Log geolocation errors
             reject(error);
           },
           { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 }
@@ -42,7 +44,6 @@ const Addlocation = () => {
   
       const { latitude, longitude } = position.coords;
   
-      // Send data to backend
       const response = await fetch('https://location-app-api.onrender.com/api/addlocation', {
         method: 'POST',
         headers: {
@@ -56,16 +57,14 @@ const Addlocation = () => {
         })
       });
   
-      // Log and handle the response from the backend
       if (response.ok) {
         console.log('Location saved successfully');
         alert('Location saved successfully');
         setShopName('');
         setExeId('');
       } else {
-        const errorText = await response.text(); // Get the error text from the response
-        console.error('Failed to save location:', errorText);
-        alert(`Failed to save location: ${errorText}`);
+        console.error('Failed to save location:', await response.text());
+        alert('Failed to save location');
       }
     } catch (error) {
       console.error('Error getting user location or saving data:', error);
@@ -74,7 +73,6 @@ const Addlocation = () => {
       setIsLoading(false);
     }
   };
-  
   
 
   return (
