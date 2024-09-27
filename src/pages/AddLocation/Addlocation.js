@@ -22,7 +22,7 @@ const Addlocation = () => {
     try {
       // Use a promise with a timeout to handle geolocation delay
       const position = await new Promise((resolve, reject) => {
-        const timeout = setTimeout(() => reject(new Error('Geolocation request timed out')), 10000); // 10 seconds timeout
+        const timeout = setTimeout(() => reject(new Error('Geolocation request timed out')), 15000); // 15 seconds timeout
         navigator.geolocation.getCurrentPosition(
           (position) => {
             clearTimeout(timeout);
@@ -32,7 +32,11 @@ const Addlocation = () => {
             clearTimeout(timeout);
             reject(error);
           },
-          { timeout: 10000 } // 10 seconds timeout for geolocation
+          {
+            enableHighAccuracy: true, // Request high accuracy location
+            timeout: 15000, // Increase timeout to 15 seconds
+            maximumAge: 0 // Prevent using cached location
+          }
         );
       });
 
