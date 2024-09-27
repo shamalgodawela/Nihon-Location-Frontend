@@ -25,19 +25,21 @@ const Addlocation = () => {
         const timeout = setTimeout(() => reject(new Error('Geolocation request timed out')), 15000); // 15 seconds timeout
         navigator.geolocation.getCurrentPosition(
           (position) => {
-            clearTimeout(timeout);
-            resolve(position);
+            const { accuracy } = position.coords;
+            console.log('GPS Accuracy:', accuracy);  // Log GPS accuracy in meters
+            if (accuracy <= 50) {  // Accept locations with accuracy better than 50 meters
+              // Proceed with saving the location
+              resolve(position);
+            } else {
+              alert('GPS signal is weak. Try moving to an open area.');
+            }
           },
           (error) => {
-            clearTimeout(timeout);
             reject(error);
           },
-          {
-            enableHighAccuracy: true, // Request high accuracy location
-            timeout: 15000, // Increase timeout to 15 seconds
-            maximumAge: 0 // Prevent using cached location
-          }
+          { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 }
         );
+        
       });
 
       const { latitude, longitude } = position.coords;
