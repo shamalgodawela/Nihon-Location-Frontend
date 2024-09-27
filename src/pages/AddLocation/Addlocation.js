@@ -26,7 +26,7 @@ const Addlocation = () => {
           (position) => {
             const { accuracy, latitude, longitude } = position.coords;
             console.log(`Accuracy: ${accuracy} meters, Latitude: ${latitude}, Longitude: ${longitude}`);
-            if (accuracy <= 1000) {
+            if (accuracy <= 3000) {
               resolve(position);
             } else {
               alert(`GPS signal is weak (Accuracy: ${accuracy} meters). Try moving to an open area.`);
