@@ -14,22 +14,22 @@ const AdminDash = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch all location details from the backend
+   
     fetch('https://location-app-api.onrender.com/api/getAlllocations')
       .then(response => response.json())
       .then(data => {
         setLocations(data);
-        setLoading(false); // Set loading to false when data is loaded
+        setLoading(false); 
       })
       .catch(error => {
         console.error('Error fetching location details:', error);
-        setLoading(false); // Set loading to false in case of error
+        setLoading(false); 
       });
   }, []);
 
   const handleViewDetails = async (id) => {
     try {
-      // Fetch the details of the selected location by ID
+      
       const response = await fetch(`https://location-app-api.onrender.com/api/location/${id}`);
       const data = await response.json();
       setSelectedLocation(data);
@@ -42,16 +42,16 @@ const AdminDash = () => {
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    setLoading(true); // Set loading to true when starting a search
+    setLoading(true); 
     try {
-      // Fetch locations based on exeId and date
+      
       const response = await fetch(`https://location-app-api.onrender.com/api/locationbydate?exeId=${exeId}&date=${date}`);
       const data = await response.json();
       setLocations(data);
-      setLoading(false); // Set loading to false when data is loaded
+      setLoading(false); 
     } catch (error) {
       console.error('Error fetching location details:', error);
-      setLoading(false); // Set loading to false in case of error
+      setLoading(false); 
     }
   };
 
@@ -96,7 +96,7 @@ const AdminDash = () => {
       <div className="all-locations-container">
         <h2 id='hloc'>All Locations</h2>
         {loading ? (
-          <div className="loading">Loading...</div> // Add loading indicator
+          <div className="loading">Loading...</div> 
         ) : (
           <table>
             <thead>
