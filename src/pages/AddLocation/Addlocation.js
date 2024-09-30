@@ -21,21 +21,22 @@ const Addlocation = () => {
   
     try {
       const position = await new Promise((resolve, reject) => {
-        const timeout = setTimeout(() => reject(new Error('Geolocation request timed out')), 15000); // 15 seconds timeout
+        const timeout = setTimeout(() => reject(new Error('Geolocation request timed out')), 20000); // 20 seconds timeout
         navigator.geolocation.getCurrentPosition(
           (position) => {
-            console.log('Full Position Data:', position.coords);  // Log full position data
             const { accuracy, latitude, longitude } = position.coords;
             console.log(`Accuracy: ${accuracy} meters, Latitude: ${latitude}, Longitude: ${longitude}`);
-            
-            if (accuracy <= 1000) {  // Increased accuracy to 1000 meters
-              resolve(position);  // Proceed with saving the location
+            if (accuracy <= 1000) { // Accept if accuracy is better than 1000 meters
+              clearTimeout(timeout); // Clear timeout if geolocation is successful
+              resolve(position); // Resolve with the position data
             } else {
               alert(`GPS signal is weak (Accuracy: ${accuracy} meters). Try moving to an open area.`);
+              clearTimeout(timeout); // Also clear timeout if GPS signal is weak
             }
           },
           (error) => {
-            console.error('Geolocation Error:', error);  // Log geolocation errors
+            console.error('Geolocation Error:', error);
+            clearTimeout(timeout); // Clear timeout in case of geolocation error
             reject(error);
           },
           { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 }
@@ -44,6 +45,7 @@ const Addlocation = () => {
   
       const { latitude, longitude } = position.coords;
   
+      // Send data to backend
       const response = await fetch('https://location-app-api.onrender.com/api/addlocation', {
         method: 'POST',
         headers: {
@@ -57,18 +59,20 @@ const Addlocation = () => {
         })
       });
   
+      // Log and handle the response from the backend
       if (response.ok) {
         console.log('Location saved successfully');
         alert('Location saved successfully');
         setShopName('');
         setExeId('');
       } else {
-        console.error('Failed to save location:', await response.text());
-        alert('Failed to save location');
+        const errorText = await response.text(); // Get the error text from the response
+        console.error('Failed to save location:', errorText);
+        alert(`Failed to save location: ${errorText}`);
       }
     } catch (error) {
       console.error('Error getting user location or saving data:', error);
-      alert('Error getting user location or saving data');
+      alert(`Error: ${error.message}`);
     } finally {
       setIsLoading(false);
     }
