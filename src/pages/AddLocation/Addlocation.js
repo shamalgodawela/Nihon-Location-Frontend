@@ -26,20 +26,20 @@ const Addlocation = () => {
           (position) => {
             const { accuracy, latitude, longitude } = position.coords;
             console.log(`Accuracy: ${accuracy} meters, Latitude: ${latitude}, Longitude: ${longitude}`);
-            if (accuracy <= 1000) { // Accept if accuracy is better than 1000 meters
-              clearTimeout(timeout); // Clear timeout if geolocation is successful
-              resolve(position); // Resolve with the position data
+            if (accuracy <= 1000) { 
+              clearTimeout(timeout); 
+              resolve(position); 
             } else {
               alert(`GPS signal is weak (Accuracy: ${accuracy} meters). Try moving to an open area.`);
-              clearTimeout(timeout); // Also clear timeout if GPS signal is weak
+              clearTimeout(timeout); 
             }
           },
           (error) => {
             console.error('Geolocation Error:', error);
-            clearTimeout(timeout); // Clear timeout in case of geolocation error
+            clearTimeout(timeout); 
             reject(error);
           },
-          { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 }
+          {  timeout: 20000, maximumAge: 0 }
         );
       });
   
