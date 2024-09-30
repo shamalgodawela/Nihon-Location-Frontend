@@ -39,7 +39,7 @@ const Addlocation = () => {
             clearTimeout(timeout); 
             reject(error);
           },
-          {  timeout: 20000, maximumAge: 0 }
+          { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 }
         );
       });
   
