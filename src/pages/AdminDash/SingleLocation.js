@@ -77,8 +77,8 @@ const SingleLocation = () => {
       
       <p className='p1location'>ExeId: {location.exeId}</p>
       <p className='p1location'>Shop Name: {location.shopName}</p>
-      <p className='p1location'>Shop Name: {location.latitude}</p>
-      <p className='p1location'>Shop Name: {location.longitude}</p>
+      <p className='p1location'>Latitude: {location.latitude}</p>
+      <p className='p1location'>longitude: {location.longitude}</p>
 
       <br/><br/><br/><br/>
 
