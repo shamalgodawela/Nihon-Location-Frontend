@@ -19,7 +19,7 @@ const MyComponent = () => {
       </div> 
       <div className="center-container">
       <button type="button" className="btn btn-outline-success">
-          <Link className='link1' to="/getalllocation">Admin Login</Link>
+          <Link className='link1' to="/getalllocation">Check users Location</Link>
       </button>
         
         
