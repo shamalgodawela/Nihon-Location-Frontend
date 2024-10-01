@@ -108,17 +108,19 @@ const AdminDash = () => {
               </tr>
             </thead>
             <tbody>
-              {locations.map(location => (
-                <tr key={location._id}>
-                  <td>{location.exeId}</td>
-                  <td>{location.shopName}</td>
-                  <td>{new Date(location.timestamp).toLocaleDateString()}</td>
-                  <td>
-                    <IoLocationOutline className='iconlocation' onClick={() => handleViewDetails(location._id)} />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
+  {locations.map(location => (
+    <tr key={location._id}>
+      <td>{location.exeId}</td>
+      <td>{location.shopName}</td>
+      {/* Format to show both Date and Time */}
+      <td>{new Date(location.timestamp).toLocaleString()}</td> 
+      <td>
+        <IoLocationOutline className='iconlocation' onClick={() => handleViewDetails(location._id)} />
+      </td>
+    </tr>
+  ))}
+</tbody>
+
           </table>
         )}
       </div>
