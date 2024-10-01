@@ -26,7 +26,7 @@ const Addlocation = () => {
           (position) => {
             const { accuracy, latitude, longitude } = position.coords;
             console.log(`Accuracy: ${accuracy} meters, Latitude: ${latitude}, Longitude: ${longitude}`);
-            if (accuracy <= 200000) { 
+            if (accuracy <= 20000) { 
               clearTimeout(timeout); 
               resolve(position); 
             } else {
@@ -80,9 +80,9 @@ const Addlocation = () => {
   
 
   return (
-    <div>
+    <div className='body-addlocation'>
       <h1 className='h1-addlocation'>Location Tracker</h1>
-      <p className='p-addlocation'>This component is used to track the user's location and save it to the database.</p>
+      <p className='p-addlocation'>This component is used to track the user's location </p>
       <div className="form1-container">
         <form onSubmit={handleSubmit}>
           <div className="form1-group">
@@ -96,7 +96,6 @@ const Addlocation = () => {
               <option value="Mr.Ahamed">Mr.Ahamed</option>
               <option value="Mr.Chamera">Mr.Chamera</option>
               <option value="Mr.Dasun">Mr.Dasun</option>
-              <option value="Mr.Sanjeewa">Mr.Sanjeewa</option>
               <option value="Mr.Navaneedan">Mr.Navaneedan</option>
             </select>
           </div>

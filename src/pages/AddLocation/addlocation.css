@@ -6,6 +6,7 @@
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   font-family: 'Arial', sans-serif;
+  margin-top: 160px;
 }
 
 .form1-group {
@@ -60,3 +61,13 @@
   cursor: not-allowed;
 }
 
+.h1-addlocation{
+  text-align: center;
+
+}
+.p-addlocation{
+  text-align: center;
+}
+.body-addlocation{
+  background-color: #ebebeb;
+}
