@@ -93,7 +93,7 @@ const Addlocation = () => {
             <label htmlFor="exeId">Executive ID:</label>
             <select id="exeId" value={exeId} onChange={handleExeIdChange} required>
               <option value="">Select Executive</option>
-              <option value="Mr.Ahamed">Mr.Nayum</option>
+              <option value="Mr.Nayum">Mr.Nayum</option>
               <option value="Mr.Ahamed">Mr.Ahamed</option>
               <option value="Mr.Chamera">Mr.Chamera</option>
               <option value="Mr.Dasun">Mr.Dasun</option>
